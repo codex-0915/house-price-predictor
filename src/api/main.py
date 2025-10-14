@@ -8,19 +8,17 @@ app = FastAPI(
     title="House Price Prediction API",
     description=(
         "An API for predicting house prices based on various features. "
-        "This application is part of the MLOps Bootcamp by School of Devops. "
-        "Authored by Gourav Shah."
     ),
-    version="1.0.0",
-    contact={
-        "name": "School of Devops",
-        "url": "https://schoolofdevops.com",
-        "email": "learn@schoolofdevops.com",
-    },
-    license_info={
-        "name": "Apache 2.0",
-        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
-    },
+    version="0.1.0",
+    # contact={
+    #     "name": "name",
+    #     "url": "url",
+    #     "email": "email",
+    # },
+    # license_info={
+    #     "name": "Apache 2.0",
+    #     "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    # },
 )
 
 # Add CORS middleware
