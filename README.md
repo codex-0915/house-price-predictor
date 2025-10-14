@@ -51,4 +51,42 @@ uv python -m jupyterlab
 python -m jupyterlab
 ```
 
+## Model Workflow
+
+### 🧹 Step 1: Data Processing
+
+Clean and preprocess the raw housing dataset:
+
+```bash
+python src/data/run_processing.py   --input data/raw/house_data.csv   --output data/processed/cleaned_house_data.csv
+```
+
 ---
+
+### Step 2: Feature Engineering
+
+Apply transformations and generate features:
+
+```bash
+python src/features/engineer.py   --input data/processed/cleaned_house_data.csv   --output data/processed/featured_house_data.csv   --preprocessor models/trained/preprocessor.pkl
+```
+
+### Step 3: Modeling & Experimentation
+
+Train your model and log everything to MLflow:
+
+```bash
+python src/models/train_model.py   --config configs/model_config.yaml   --data data/processed/featured_house_data.csv   --models-dir models   --mlflow-tracking-uri http://localhost:5555
+```
+
+
+## Building FastAPI and Streamlit App
+
+### Building FastAPI
+
+To build and run the FastAPI that the streamlit app will use, run:
+
+```bash
+podman build -t fastapi .
+podman run -idtP fastapi
+``
