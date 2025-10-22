@@ -87,8 +87,8 @@ python src/models/train_model.py   --config configs/model_config.yaml   --data d
 To build and run the FastAPI that the streamlit app will use, run:
 
 ```bash
-podman image build -t fastapi .  # Build the image
-podman run -idtP fastapi         # Run the container
+podman build -t house-price-predict-fastapi:latest .  # Build the image
+podman run -idtp house-price-predict-fastapi         # Run the container
 ```
 
 You could test the API with Postman, or using curl using:
@@ -107,9 +107,11 @@ curl -X POST "http://localhost:8000/predict" \
 ```
 **NOTE**: Be sure to replace `http://localhost:8000/predict` with actual endpoint based on where its running.
 
-### Run Streamlit Application
+### Run Streamlit Application with FastAPI
+
+To run the streamlit app with FastAPI, run:
 
 ```bash
-podman image build -t streamlit_app ./streamlit_app/  # Build the image
-podman run -idtP streamlit_app         # Run the container
+podman-compose build  # Build the image
+podman-compose up -d  # Run the streamlit app with Fastapi
 ```
