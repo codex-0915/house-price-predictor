@@ -72,6 +72,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: codex0915/house-price-predict-fastapi:{{ github.sha }}
+          tags: codex0915/house-price-predict-fastapi:${{ github.sha }}
           context: .
           file: ./Dockerfile
