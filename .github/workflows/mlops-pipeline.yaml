@@ -152,7 +152,7 @@ jobs:
         with:
           registry: docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push Docker image to Dockerhub
         run: |
           COMMIT_HASH=$(echo ${{ github.sha }} | cut -c 1-7)
