@@ -138,8 +138,8 @@ jobs:
       - name: Build and test Docker image
         run: |
           COMMIT_HASH=$(echo ${{ github.sha }} | cut -c 1-7)
-          docker build -t docker.io/{{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH -f ./Dockerfile .
-          docker run -d -p 8000:8000 --name test-api docker.io/{{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH
+          docker build -t docker.io/${{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH -f ./Dockerfile .
+          docker run -d -p 8000:8000 --name test-api docker.io/${{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH
           for count in {1..10}; do
             curl -f http://localhost:8000/health && break || sleep 5;
           done
@@ -156,7 +156,7 @@ jobs:
       - name: Push Docker image to Dockerhub
         run: |
           COMMIT_HASH=$(echo ${{ github.sha }} | cut -c 1-7)
-          docker tag docker.io/{{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH \
-            docker.io/{{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:latest
-          docker push docker.io/{{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH
-          docker push docker.io/{{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:latest
+          docker tag docker.io/${{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH \
+            docker.io/${{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:latest
+          docker push docker.io/${{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:$COMMIT_HASH
+          docker push docker.io/${{ vars.DOCKER_USERNAME }}/house-price-predict-fastapi:latest
