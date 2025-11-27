@@ -1,12 +1,7 @@
 name: MLOps CI Workflow
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch: {}
 
 jobs:
   build:
