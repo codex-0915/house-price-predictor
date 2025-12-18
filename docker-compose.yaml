@@ -1,6 +1,6 @@
 services:
   fastapi:
-    image: codex0915/house-price-predict-fastapi:dev
+    image: codex0915/house-price-predict-fastapi:latest
     build:
       context: .
       dockerfile: Dockerfile
